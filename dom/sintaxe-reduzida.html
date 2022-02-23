@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<div id="app">
+    <p>Counter: {{counter}} </p>
+    <button @click="increase">Increase 1</button> <!-- @click é igual a v-on:click -->
+    <hr>
+    <input type="text" :value="counter"> <!-- :value é igual a v-bind:value -->
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+        },
+        methods: {
+            increase(){
+                this.counter++
+            },
+        }
+    })
+</script>

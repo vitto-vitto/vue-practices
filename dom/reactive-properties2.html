@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<div id="app">
+    <p>Counter: {{counter}} | {{counter2}} </p>
+    <p>Result: {{ result }}</p> <!--Quando trabalhando com resultados computados, não precisamos utilizar o metodo, podemos chamar somente o nome da funçao -->
+    <button v-on:click="increase">Increase Counter 1</button>
+    <button v-on:click="counter2++">Increase Counter 2</button>
+    <button v-on:click="decrease">Decrease Counter 1</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            counter2: 0,
+        },
+        computed: {
+            result(){
+                return this.counter >= 5 ? 'Bigger or even than 5' : 'lower than 5' 
+            }
+        },
+        watch: { //whatch é usado para monitorar alterações nos valores de propriedades como os counters do exercício, recebe dois parametros, o novo valor da propriedade e o antigo //
+            counter(neww, old){
+                setTimeout(() => {
+                    this.counter = 0
+                }, 2000)
+            }
+        },
+        methods: {
+            increase(){
+                this.counter++
+            },
+            decrease(){
+                this.counter--
+            },
+        }
+    })
+</script>

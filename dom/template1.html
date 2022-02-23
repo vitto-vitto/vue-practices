@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<div id="app">
+    <p v-once>{{ title }} -> Title using v-once</p> <!-- v-once: serve para que o Vue puxe a informação somente 1 vez -->
+    <p>{{ helloWorld() }}</p>
+    <p>{{ returnHi() }}</p>
+    <a v-bind:href="link">Google</a> <!-- v-bind: serve para que o Vue faca o bind do atributo HTML com o dado do arquivo JS -->
+    <p v-html="linkHtml">Google</p> <!-- v-html: Insere um bloco de código definido em data diretamente dentro da tag que foi atribuido -->
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Title Using VueJS',
+            link: 'https://google.com.br',
+            linkHtml: '<a href="https://google.com">Google Link using data</a>',
+        },
+        methods: {
+            helloWorld: function(){
+                return 'Hello World'
+            },
+            returnHi: function(){
+                this.title = 'Hi, this is the title after it has been treated'
+                return this.title
+            }
+        }
+    })
+</script>

@@ -1,0 +1,73 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<style>
+    .boxes{
+        display: flex;
+        justify-content: space-around;
+    }
+    .demo{
+        width: 100px;
+        height: 100px;
+        background-color: darkorchid;
+    }
+
+    .c1{
+        background-color: red;
+    }
+    .c2{
+        background-color: green;
+    }
+    .c3{
+        background-color: blue;
+    }
+    .spin{
+        transform: rotate(45deg);
+        transition: 0,5s ease-in;
+    }
+
+</style>
+
+<div id="app">
+    <div class="boxes">
+        <div class="demo" :class="estilo1" 
+            @click="applyC1 = !applyC1"></div> <!-- em :class="" colocamos duas propriedades, a primeira é o nome da classe que queremos adicionar e a segunda a condição para que seja aplicado, no caso seria applyC1 = ture -->
+        
+        <div class="demo" :style="[meuEstilo]"></div> <!-- Podemos definir estilos diretamente ao inves de usar classes, definindo um objeto com o que vai ser utilizado em computed -->
+        
+        <div class="demo" :class="[cssClass]"></div> <!-- Usamos a cssClass para puxar a classe CSS de data, que está atrelada ao v-model do input, deixando a classe dinamica -->
+    </div>
+    <hr>
+    <input type="text" v-model="cssClass">
+    <input type="text" v-model="width">
+    <input type="text" v-model="color">
+    <input type="text" v-model="height">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            applyC1: false,
+            cssClass: 'c1',
+            applySpin: true,
+            color: 'red',
+            width: 100,
+            height: 100,
+        },
+        computed: {
+            estilo1(){
+                return {
+                    c1: this.applyC1,
+                    c2: !this.applyC1
+                }
+            },
+            meuEstilo(){
+                return{
+                    backgroundColor: this.color,
+                    width: `${this.width}px`,
+                    height: `${this.height}px`
+                }
+            }
+        }
+    })
+</script>

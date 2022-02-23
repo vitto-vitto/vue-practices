@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+    <input type="text" v-bind:value="titulo" v-on:input="titulo = $event.target.value"> <!-- v-bind:value usa a informacao que queremos puxar de data para preencher o valor do input // v-on:event - joga dados do evento para o javascript-->
+    <input type="text" v-model="titulo" name="" id=""> <!-- v-model é usado para atrelar o input ao titulo que esta em data e vice versa -->
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS'
+        }
+    })
+</script>
